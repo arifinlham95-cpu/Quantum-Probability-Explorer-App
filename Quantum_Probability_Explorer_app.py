@@ -156,7 +156,7 @@ x_expect = expectation_x(x, prob_density)
 dx = x[1] - x[0]
 psi_x_deriv = np.gradient(psi_xt, dx)
 p_psi = -1j * hbar * psi_x_deriv
-p_expect = integrate.trapz(np.conj(psi_xt) * p_psi, x).real
+p_expect = np.trapz(np.conj(psi_xt) * p_psi, x).real
 
 # Display values
 st.subheader("Hasil perhitungan")
@@ -186,4 +186,5 @@ st.markdown("---")
 st.markdown("Jika Anda ingin saya tambahkan fitur: harmonic oscillator numerik, dekomposisi Gaussian, atau export data CSV untuk LMS, beri tahu saya — saya akan tambahkan ke aplikasi ini.")
 
 # End of file
+
 
