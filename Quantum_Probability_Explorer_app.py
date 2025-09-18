@@ -72,7 +72,7 @@ def E_infinite_well(n, L):
     return (n ** 2 * np.pi ** 2 * hbar ** 2) / (2.0 * m * L ** 2)
 
 def expectation_x(x, prob):
-    return integrate.trapz(x * prob, x)
+    return np.trapz(x * prob, x)
 
 def expectation_p_from_basis(coeffs, n_vals, L):
     # For infinite well basis, <p> in stationary basis is 0 for real coefficients
@@ -146,7 +146,7 @@ psi_xt = np.tensordot(coeffs * time_factors, phis, axes=(0, 0))
 prob_density = np.abs(psi_xt) ** 2
 
 # normalization check
-norm_xt = integrate.trapz(prob_density, x)
+norm_xt = np.trapz(prob_density, x)
 
 # expectation values
 x_expect = expectation_x(x, prob_density)
@@ -186,3 +186,4 @@ st.markdown("---")
 st.markdown("Jika Anda ingin saya tambahkan fitur: harmonic oscillator numerik, dekomposisi Gaussian, atau export data CSV untuk LMS, beri tahu saya — saya akan tambahkan ke aplikasi ini.")
 
 # End of file
+
