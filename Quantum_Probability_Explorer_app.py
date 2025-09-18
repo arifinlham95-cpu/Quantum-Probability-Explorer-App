@@ -182,9 +182,7 @@ st.markdown("---")
 st.subheader("Instruksi untuk guru / catatan pembelajaran")
 st.markdown("1. Minta siswa coba mengatur amplitudo/fase c_n untuk melihat bagaimana pola |ψ|^2 berubah (interferensi konstruktif/destruktif).\n2. Tunjukkan bahwa untuk eigenstates tunggal probabilitas stabil (waktu-independen).\n3. Tanyakan bagaimana ⟨x⟩ dan ⟨p⟩ berubah bila koefisien kompleks berbeda fase.")
 
-st.markdown("---")
-st.markdown("Jika Anda ingin saya tambahkan fitur: harmonic oscillator numerik, dekomposisi Gaussian, atau export data CSV untuk LMS, beri tahu saya — saya akan tambahkan ke aplikasi ini.")
-
 # End of file
+
 
 
