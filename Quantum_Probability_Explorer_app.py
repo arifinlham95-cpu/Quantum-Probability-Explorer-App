@@ -105,7 +105,7 @@ for n in range(1, max_basis + 1):
     psi_xt += coeffs[n-1] * phi_infinite_well(x, L, n) * np.exp(-1j * En * t / hbar)
 
 # Normalisasi
-norm = integrate.trapz(np.abs(psi_xt)**2, x)
+norm = np.trapz(np.abs(psi_xt)**2, x)
 psi_xt /= np.sqrt(norm)
 
 # Probabilitas
@@ -141,3 +141,4 @@ plt.tight_layout()
 st.pyplot(fig)
 
 # --- End of file ---
+
