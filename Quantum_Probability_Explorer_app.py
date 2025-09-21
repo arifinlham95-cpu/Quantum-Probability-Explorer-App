@@ -91,8 +91,36 @@ with col1:
     x_points = st.slider("Jumlah titik x (resolusi)", 200, 2000, 800)
     x = np.linspace(0, L, x_points)
 
-    st.subheader("Mode basis")
+   mode = st.radio("Pilih mode:", ["Eigenstate tunggal", "Superposisi"])
+
+if mode == "Eigenstate tunggal":
+    n_val = st.slider("Pilih bilangan kuantum n", 1, 8, 1)
+    coeffs = np.zeros(n_val, dtype=complex)
+    coeffs = np.array([1.0 if i == (n_val-1) else 0.0 for i in range(n_val)])
+    max_basis = n_val
+else:
     max_basis = st.slider("Jumlah basis (N) untuk superposisi", 1, 8, 4)
+    st.markdown("**Koefisien kompleks untuk masing-masing basis** — atur amplitudo & fase lalu normalisasi otomatis.")
+    amps = []
+    phases = []
+    for n in range(1, max_basis + 1):
+        st.write(f"Basis n = {n}")
+        col_a, col_p = st.columns([1, 2])
+        with col_a:
+            a = st.slider(f"Amplitudo a_{n}", 0.0, 1.0, 0.0, key=f"a{n}")
+        with col_p:
+            ph = st.slider(f"Fase φ_{n} (rad)", 0.0, 2 * np.pi, 0.0, key=f"p{n}")
+        amps.append(a)
+        phases.append(ph)
+
+    if np.allclose(amps, 0.0):
+        amps[0] = 1.0
+
+    coeffs = np.array([amps[i] * np.exp(1j * phases[i]) for i in range(max_basis)])
+    norm = np.sqrt(np.sum(np.abs(coeffs) ** 2))
+    if norm == 0:
+        norm = 1.0
+    coeffs = coeffs / norm
 
     st.markdown("**Koefisien kompleks untuk masing-masing basis** — atur amplitudo & fase lalu normalisasi otomatis.")
     amps = []
@@ -183,6 +211,7 @@ st.subheader("Instruksi untuk guru / catatan pembelajaran")
 st.markdown("1. Minta siswa coba mengatur amplitudo/fase c_n untuk melihat bagaimana pola |ψ|^2 berubah (interferensi konstruktif/destruktif).\n2. Tunjukkan bahwa untuk eigenstates tunggal probabilitas stabil (waktu-independen).\n3. Tanyakan bagaimana ⟨x⟩ dan ⟨p⟩ berubah bila koefisien kompleks berbeda fase.")
 
 # End of file
+
 
 
 
