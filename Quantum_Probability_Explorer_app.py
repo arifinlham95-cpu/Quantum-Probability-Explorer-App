@@ -91,7 +91,7 @@ with col1:
     x_points = st.slider("Jumlah titik x (resolusi)", 200, 2000, 800)
     x = np.linspace(0, L, x_points)
 
-   mode = st.radio("Pilih mode:", ["Eigenstate tunggal", "Superposisi"])
+mode = st.radio("Pilih mode:", ["Eigenstate tunggal", "Superposisi"])
 
 if mode == "Eigenstate tunggal":
     n_val = st.slider("Pilih bilangan kuantum n", 1, 8, 1)
@@ -211,6 +211,7 @@ st.subheader("Instruksi untuk guru / catatan pembelajaran")
 st.markdown("1. Minta siswa coba mengatur amplitudo/fase c_n untuk melihat bagaimana pola |ψ|^2 berubah (interferensi konstruktif/destruktif).\n2. Tunjukkan bahwa untuk eigenstates tunggal probabilitas stabil (waktu-independen).\n3. Tanyakan bagaimana ⟨x⟩ dan ⟨p⟩ berubah bila koefisien kompleks berbeda fase.")
 
 # End of file
+
 
 
 
