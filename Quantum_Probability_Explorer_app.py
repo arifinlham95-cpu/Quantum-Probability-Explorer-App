@@ -19,6 +19,7 @@ import streamlit as st
 import numpy as np
 from scipy import integrate
 import matplotlib.pyplot as plt
+from io import BytesIO  # tambahan untuk fitur download gambar HD
 
 st.set_page_config(page_title="Quantum Probability Explorer", layout="wide")
 
@@ -140,5 +141,19 @@ ax[2].set_xlabel('x')
 plt.tight_layout()
 st.pyplot(fig)
 
-# --- End of file ---
+# ==============================
+# DOWNLOAD GRAFIK HD
+# ==============================
+# Simpan figure ke buffer sebagai PNG HD (dpi tinggi)
+buf = BytesIO()
+fig.savefig(buf, format="png", dpi=300, bbox_inches="tight")
+buf.seek(0)
 
+st.download_button(
+    label="Download 3 grafik (Re, Im, |ψ|²) sebagai gambar HD (PNG)",
+    data=buf,
+    file_name="quantum_probability_explorer_plots_hd.png",
+    mime="image/png"
+)
+
+# --- End of file ---
